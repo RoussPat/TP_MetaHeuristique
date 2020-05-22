@@ -162,7 +162,7 @@ public class TabooSolver implements Solver {
 
     @Override
     public Result solve(Instance instance, long deadline) throws IOException {
-        Result Sinit = (new GreedySolver(2)).solve(instance, deadline);
+        Result Sinit = (new GreedySolver(0)).solve(instance, deadline);
         if (deadline - System.currentTimeMillis() < 1) {
             return (Sinit);
         }
@@ -205,18 +205,19 @@ public class TabooSolver implements Solver {
                     haschanged = true;
                 }
                 else{
-                    haschanged = false;
+                    haschanged = true;
                 }
             }
             else {
                 i=0;
-                haschanged = false;
+                haschanged = true;
                 Bestneighbors = neighbors.get(0);
                 BestneighborsSwap = swaps.get(i);
                 for (ResourceOrder cur : neighbors) {
                     tempsced = cur.toSchedule();
                     if(tempsced != null) {
                         if ((tempsced.makespan() < Bestneighbors.toSchedule().makespan()) && (MatrixTaboo[swaps.get(i).t1][swaps.get(i).t2] < k)) {
+
                             Bestneighbors = cur;
                             BestneighborsSwap = swaps.get(i);
                             haschanged = true;
@@ -228,10 +229,13 @@ public class TabooSolver implements Solver {
                 }
             }
             neighbors.clear();
+
+
             if (haschanged) {
                 MatrixTaboo[BestneighborsSwap.t1][BestneighborsSwap.t2] = k + this.DureeTabou;
                 swaps.clear();
                 Shedtemp = Bestneighbors.toSchedule();
+                System.out.println(Shedtemp.makespan());
                 if (Shedtemp.makespan() < CurBest.schedule.makespan()) {
                     CurBest = new Result(instance, Shedtemp, Result.ExitCause.Timeout);
                 }

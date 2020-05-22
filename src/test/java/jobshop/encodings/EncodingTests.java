@@ -121,8 +121,8 @@ public class EncodingTests {
         //assert result.schedule.makespan() == resLRPT.schedule.makespan(); // should have the same makespan
     }*/
     @Test
-    public void DescentSolver_la01() throws IOException {
-        Instance instance = Instance.fromFile(Paths.get("instances/la01"));
+    public void DescentSolver_la35() throws IOException {
+        Instance instance = Instance.fromFile(Paths.get("instances/la35"));
         long deadline = System.currentTimeMillis() + 1000;
         // build a solution that should be equal to the result of BasicSolver
         DescentSolver Dsolver = new DescentSolver(0);
@@ -134,8 +134,8 @@ public class EncodingTests {
 
     }
     @Test
-    public void TabouSolver200_20_la40() throws IOException {
-        Instance instance = Instance.fromFile(Paths.get("instances/la40"));
+    public void TabouSolver200_20_la35() throws IOException {
+        Instance instance = Instance.fromFile(Paths.get("instances/la35"));
         long deadline = System.currentTimeMillis() + 1000;
         // build a solution that should be equal to the result of BasicSolver
         TabooSolver TSolver = new TabooSolver(200,20);

@@ -74,7 +74,7 @@ public class Main {
 
         PrintStream output = System.out;
 
-        long solveTimeMs = ns.getLong("timeout") * 1000;
+        long solveTimeMs = ns.getLong("timeout");
 
         List<String> solversToTest = ns.getList("solver");
         for(String solverName : solversToTest) {

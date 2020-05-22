@@ -136,6 +136,7 @@ public class DescentSolver implements Solver {
                 tempsced = neighbors.get(i).toSchedule();
                 if(tempsced != null) {
                     if (tempsced.makespan() < currentbest.schedule.makespan()) {
+                        //System.out.println(currentbest.schedule.makespan());
                         RO = neighbors.get(i);
                         currentbest = new Result(instance, RO.toSchedule(), Result.ExitCause.Timeout);
                         blockList = blocksOfCriticalPath(RO);
@@ -167,6 +168,7 @@ public class DescentSolver implements Solver {
                 i--;
             }
         }
+        //System.out.println(currentbest.schedule.makespan());
         return new Result(instance, RO.toSchedule(), Result.ExitCause.Blocked);
     }
 
