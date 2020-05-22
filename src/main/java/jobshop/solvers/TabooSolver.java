@@ -235,7 +235,7 @@ public class TabooSolver implements Solver {
                 MatrixTaboo[BestneighborsSwap.t1][BestneighborsSwap.t2] = k + this.DureeTabou;
                 swaps.clear();
                 Shedtemp = Bestneighbors.toSchedule();
-                System.out.println(Shedtemp.makespan());
+                //System.out.println(Shedtemp.makespan());
                 if (Shedtemp.makespan() < CurBest.schedule.makespan()) {
                     CurBest = new Result(instance, Shedtemp, Result.ExitCause.Timeout);
                 }
