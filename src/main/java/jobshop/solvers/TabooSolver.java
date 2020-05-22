@@ -162,7 +162,7 @@ public class TabooSolver implements Solver {
 
     @Override
     public Result solve(Instance instance, long deadline) throws IOException {
-        Result Sinit = (new GreedySolver(0)).solve(instance, deadline);
+        Result Sinit = (new GreedySolver(2)).solve(instance, deadline);
         if (deadline - System.currentTimeMillis() < 1) {
             return (Sinit);
         }
